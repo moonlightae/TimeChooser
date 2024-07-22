@@ -36,7 +36,7 @@ export default function App() {
 
     function Earth() {
         return (
-            <img src={process.env.PUBLIC_URL + 'Earth.jpeg'}
+            <img src={process.env.PUBLIC_URL + 'Earth_D.png'}
                  alt={'Earth'}
                  width={300}
                  height={300}
@@ -49,7 +49,7 @@ export default function App() {
     function Sun() {
         return (
             <img
-                src={process.env.PUBLIC_URL + 'Sun.png'}
+                src={process.env.PUBLIC_URL + 'Sun_D.png'}
                 alt={'Sun'}
                 width={3000}
                 height={3000}
@@ -62,7 +62,7 @@ export default function App() {
 
     function Moon() {
         return (
-            <img src={process.env.PUBLIC_URL + 'Moon.png'}
+            <img src={process.env.PUBLIC_URL + 'Moon_D.png'}
                  alt={'Moon'}
                  width={1000}
                  height={1000}
@@ -189,7 +189,7 @@ export default function App() {
     function MOver3() {
         Rotate_CSS_Year = parseInt(rootStyles.getPropertyValue('--rotate3'));
         setText_Year(`Sun_Spin_Power is ${Sun_Spin_Power}`);
-        setNow_Year(`${Math.floor((Rotate_CSS_Year/360 % 200 === 0) ? 1924 : (Rotate_CSS_Year/360 % 200) + 1924)}`);
+        setNow_Year(`${Math.floor((Math.floor(Rotate_CSS_Year/360) % 200 === 0) ? 1924 : (Rotate_CSS_Year/360 % 200) + 1924)}`);
             if (Sun_Spin_Power > 1) {
                 setSun_Spin_Power(Sun_Spin_Power - 1);
                 document.documentElement.style.setProperty('--rotate3', `${Rotate_CSS_Year + (Sun_Spin_Power) / Rotate_Times3}deg`);
@@ -203,7 +203,7 @@ export default function App() {
     function MOver2() {
         Rotate_CSS_Month = parseInt(rootStyles.getPropertyValue('--rotate2'));
         setText_Month(`Moon_Spin_Power is ${Moon_Spin_Power}`);
-        setNow_Month(`${Math.floor(Rotate_CSS_Month / -360 % 12 !== 0 ? Rotate_CSS_Month / -360 % 12 : -12)}`);
+        setNow_Month(`${Math.floor((Math.floor(Rotate_CSS_Month / -360) % 12 !== 0) ? Math.floor(Rotate_CSS_Month / -360) % 12 : -12)}`);
             if (Moon_Spin_Power > 1) {
                 setMoon_Spin_Power(Moon_Spin_Power - 1);
                 document.documentElement.style.setProperty('--rotate2', `${Rotate_CSS_Month + (Moon_Spin_Power) / Rotate_Times2}deg`);
@@ -222,7 +222,7 @@ export default function App() {
     function MOver() {
         Rotate_CSS_Day = parseInt(rootStyles.getPropertyValue('--rotate'));
         setText_Day(`Earth_Spin_Power is ${-Earth_Spin_Power}`);
-        setNow_Day(`${Math.floor(Rotate_CSS_Day/-360 % 31 !== 0 ? Rotate_CSS_Day/-360 % 31 : 31)}`);
+        setNow_Day(`${Math.floor((Math.floor(Rotate_CSS_Day/-360) % 31 !== 0) ? Math.floor(Rotate_CSS_Day/-360) % 31 : 31)}`);
         if (Earth_Spin_Power < -1) {
             setEarth_Spin_Power(Earth_Spin_Power + 1);
             document.documentElement.style.setProperty('--rotate', `${Rotate_CSS_Day + (Earth_Spin_Power)/Rotate_Times1}deg`);
@@ -251,7 +251,7 @@ export default function App() {
                     Rotate_CSS_Day = parseInt(rootStyles.getPropertyValue('--rotate'));
                     setEarth_Spin_Power(Earth_Spin_Power - 1);
                     setText_Day(`Earth_Spin_Power is ${-Earth_Spin_Power}`);
-                    setNow_Day(`${Math.floor(Rotate_CSS_Day/-360 % 31 !== 0 ? Rotate_CSS_Day/-360 % 31 : 31)}`);
+                    setNow_Day(`${Math.floor(Math.floor(Rotate_CSS_Day/-360) % 31 !== 0 ? Rotate_CSS_Day/-360 % 31 : 31)}`);
                     return (
                         document.documentElement.style.setProperty('--rotate', `${Rotate_CSS_Day + (Earth_Spin_Power)/Rotate_Times1}deg`));
                 }
@@ -271,7 +271,7 @@ export default function App() {
                     Rotate_CSS_Month = parseInt(rootStyles.getPropertyValue('--rotate2'));
                     setMoon_Spin_Power(Moon_Spin_Power + 1);
                     setText_Month(`Moon_Spin_Power is ${Moon_Spin_Power}`);
-                    setNow_Month(`${Math.floor((Rotate_CSS_Month/-360 % 12 === 0) ? 12 : Rotate_CSS_Month/-360 % 12)}`);
+                    setNow_Month(`${Math.floor((Math.floor(Rotate_CSS_Month/-360) % 12 !== 0) ? Rotate_CSS_Month/-360 % 12 : -12)}`);
                     return (
                         document.documentElement.style.setProperty('--rotate2', `${Rotate_CSS_Month + (Moon_Spin_Power)/Rotate_Times2}deg`));
                 }
@@ -292,7 +292,7 @@ export default function App() {
                     Rotate_CSS_Year = parseInt(rootStyles.getPropertyValue('--rotate3'));
                     setSun_Spin_Power(Sun_Spin_Power + 1);
                     setText_Year(`Sun_Spin_Power is ${Sun_Spin_Power}`);
-                    setNow_Year(`${Math.floor((Rotate_CSS_Year/360 % 200 === 0) ? 1924 : (Rotate_CSS_Year/360 % 200) + 1924)}`);
+                    setNow_Year(`${Math.floor((Math.floor(Rotate_CSS_Year/360) % 200 === 0) ? 1924 : (Rotate_CSS_Year/360 % 200) + 1924)}`);
                     return (
                         document.documentElement.style.setProperty('--rotate3', `${Rotate_CSS_Year + (Sun_Spin_Power)/Rotate_Times3}deg`));
                 }
